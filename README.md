@@ -56,6 +56,17 @@ Las 13 pruebas de Flutter (modelo `Task`, widget `TaskListPanel` con botón `Ret
 
 ![Flutter Tests](docs/img/03_flutter_tests.png)
 
+### 4. Pruebas de Rendimiento y Carga con Grafana k6 (Sección 10)
+Ejecución del test de carga en el endpoint `/health` con 5 usuarios virtuales (VUs). Se verifica el cumplimiento de los umbrales de SLA (`http_req_duration p(95)=4.1ms < 500ms`, `rate<0.01`, 50 iteraciones completadas con 0% de errores).
+
+![k6 Performance Test](docs/img/04_k6_performance_test.png)
+![k6 Results Summary](docs/img/05_k6_results_summary.jpg)
+
+### 5. Servidor API y Ejecución de la Aplicación en Chrome
+Despliegue local del servidor API en `http://localhost:3000` y ejecución de la aplicación cliente en Google Chrome con Flutter DevTools.
+
+![Server and Flutter Run](docs/img/06_server_and_flutter_run.jpg)
+
 ---
 
 ## 🚀 Guía de Ejecución Rápida

@@ -98,6 +98,9 @@ Si tu profesor, evaluador o entrega académica requiere **capturas de pantalla g
      ```
      *(Verás la alerta roja `✗ 'p(95)<0.5'` indicando la violación del SLA de rendimiento)*
 
+![k6 Performance](img/04_k6_performance_test.png)
+![k6 Results](img/05_k6_results_summary.jpg)
+
 ---
 
 ### 💡 Diagnóstico y Solución de Errores Comunes de Terminal
@@ -113,14 +116,17 @@ Si tu profesor, evaluador o entrega académica requiere **capturas de pantalla g
 
 ---
 
-### Captura 5: Interfaz Visual de la Aplicación Flutter (Opcional si deseas mostrar la UI en vivo)
-* **Qué demuestra:** La aplicación móvil funcionando en el navegador Chrome.
+### Captura 5: Interfaz Visual de la Aplicación Flutter y Servidor API
+* **Qué demuestra:** La aplicación móvil funcionando en el navegador Chrome junto con el servidor API activo.
 * **Cómo tomarla:**
   1. En la carpeta `mobile`, ejecuta:
      ```powershell
      flutter run -d chrome
      ```
-  2. Se abrirá la ventana de Chrome con la pantalla de login de Task Manager (`email-field`, `password-field`, botón "Log In").
-  3. Ingresa cualquier correo sintético (`tester@example.test`), pulsa "Log In" y verás la lista de tareas con el botón flotante `+`.
-  4. Crea una tarea ("Revisar entrega") y tómale captura con tu herramienta de recortes (Win + Shift + S).
+  2. En otra terminal levanta el servidor:
+     ```powershell
+     node backend/src/server.js
+     ```
+
+![Server and Flutter Run](img/06_server_and_flutter_run.jpg)
 
