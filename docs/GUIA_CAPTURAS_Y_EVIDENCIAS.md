@@ -1,0 +1,108 @@
+# Guía de Evidencias y Capturas de Pantalla Recomendadas
+**Compilación de Evidencias Técnicas e Instrucciones para Capturas Visuales del Usuario**
+
+---
+
+## 1. Evidencias Automatizadas ya Generadas en el Repositorio
+
+En la carpeta [`EVIDENCIAS/`](file:///c:/Users/cesar/Downloads/Guiado%20Testing/EVIDENCIAS/) se han capturado y almacenado las salidas completas de consola de las ejecuciones reales realizadas en este entorno:
+
+1. **`EVIDENCIAS/backend_test_results.txt`**:
+   * Salida completa de Jest ejecutando las 5 suites de backend:
+     * `tasks.test.js` (8 pruebas, incluyendo BOLA, validaciones y CRUD).
+     * `validation.test.js` (14 pruebas de límites BVA de título y contraseñas).
+     * `auth.test.js` (5 pruebas de registro, login, rotación JWT y logout).
+     * `security.test.js` (4 pruebas de SQLi, XSS, rate limiting y DoS de 10kb).
+     * `mock-vs-integration.test.js` (3 pruebas del Ejercicio Práctico 15).
+   * **Resultado:** 34 pruebas superadas (100% PASS).
+
+2. **`EVIDENCIAS/flutter_test_results.txt`**:
+   * Salida de `flutter test` ejecutando:
+     * `task_test.dart` (5 pruebas unitarias del modelo `Task`, incluyendo id nulo y 120 caracteres de longitud máxima).
+     * `task_list_panel_test.dart` (7 pruebas de widgets: estados de carga, vacío, error, datos, botón de reintento `Retry`, escalado accesible al 200% y pantalla pequeña de 320×568 dp).
+     * `user_journey_test.dart` (1 prueba del viaje completo: login, creación de tarea, completado y logout).
+   * **Resultado:** 13 pruebas superadas (100% PASS).
+
+3. **`EVIDENCIAS/k6_normal_run.txt`**:
+   * Ejecución de carga con Grafana k6 contra `/health` con 5 VUs durante 10s.
+   * `✓ 'p(95)<500' p(95)=15.9ms`, `✓ 'rate<0.01' rate=0.00%`, 50 peticiones exitosas. Exit code 0.
+
+4. **`EVIDENCIAS/k6_threshold_fail_run.txt`** (Ejercicio Práctico 10):
+   * Ejecución con umbral alterado a `p(95)<0.5ms`.
+   * Muestra la alerta de k6 `✗ 'p(95)<0.5' p(95)=2.94ms`, nivel error y Exit code 1.
+
+5. **`EVIDENCIAS/ci_failure_demonstration.txt`** (Ejercicio Práctico 14):
+   * Registro donde se rompió intencionalmente el código de validación (`title.length < 5`), provocando la caída de la suite de pruebas para comprobar la detección del fallo en el pipeline, antes de restaurar el código original.
+
+---
+
+## 2. Guía de Capturas de Pantalla Recomendadas para el Usuario
+
+Si tu profesor, evaluador o entrega académica requiere **capturas de pantalla gráficas (screenshots)** tomadas directamente desde tu escritorio o terminal, a continuación tienes la lista exacta de las **5 capturas más relevantes** y el comando simple para producirlas:
+
+---
+
+### Captura 1: Pruebas del Backend en Verde (Jest)
+* **Qué demuestra:** Ejecución exitosa de las 34 pruebas unitarias, de integración, seguridad y límites.
+* **Cómo tomarla:**
+  1. Abre tu terminal (PowerShell o CMD) en la raíz del proyecto.
+  2. Ejecuta:
+     ```powershell
+     cd backend
+     npm test
+     ```
+  3. Toma captura a la terminal donde se vean los bloques en verde:
+     `PASS tests/tasks.test.js`, `PASS tests/validation.test.js`, etc., y la línea final:
+     `Test Suites: 5 passed, 5 total | Tests: 34 passed, 34 total`.
+
+---
+
+### Captura 2: Cobertura de Código del Backend (Coverage)
+* **Qué demuestra:** Cobertura superior al 85% de líneas y funciones probadas.
+* **Cómo tomarla:**
+  1. En la carpeta `backend`, ejecuta:
+     ```powershell
+     npm run test:coverage
+     ```
+  2. Toma captura de la tabla de porcentajes que muestra el desglose por archivo (`app.js`, `jwt.js`, `tasks.js`, `validation.js`).
+
+---
+
+### Captura 3: Pruebas de Widgets y Viaje de Usuario en Flutter
+* **Qué demuestra:** Cumplimiento de los tests de interfaz móvil, accesibilidad, botón de reintento y E2E.
+* **Cómo tomarla:**
+  1. En la terminal, dirígete a `mobile`:
+     ```powershell
+     cd ..\mobile
+     flutter test
+     ```
+  2. Toma captura donde se observe el mensaje final:
+     `00:03 +13: All tests passed!`.
+
+---
+
+### Captura 4: Prueba de Rendimiento con k6 (Línea Base y Umbral Superado)
+* **Qué demuestra:** Medición de latencia y cumplimiento del Ejercicio Práctico 10.
+* **Cómo tomarla:**
+  1. En una terminal, levanta el backend:
+     ```powershell
+     node backend/src/server.js
+     ```
+  2. En otra terminal, ejecuta el test de k6:
+     ```powershell
+     $env:BASE_URL="http://127.0.0.1:3000"; & "C:\Program Files\k6\k6.exe" run backend/perf/health-test.js
+     ```
+  3. Toma captura donde se aprecie el logo ASCII de Grafana k6 y los checks en verde (`✓ 'p(95)<500'`).
+
+---
+
+### Captura 5: Interfaz Visual de la Aplicación Flutter (Opcional si deseas mostrar la UI en vivo)
+* **Qué demuestra:** La aplicación móvil funcionando en el navegador Chrome.
+* **Cómo tomarla:**
+  1. En la carpeta `mobile`, ejecuta:
+     ```powershell
+     flutter run -d chrome
+     ```
+  2. Se abrirá la ventana de Chrome con la pantalla de login de Task Manager (`email-field`, `password-field`, botón "Log In").
+  3. Ingresa cualquier correo sintético (`tester@example.test`), pulsa "Log In" y verás la lista de tareas con el botón flotante `+`.
+  4. Crea una tarea ("Revisar entrega") y tómale captura con tu herramienta de recortes (Win + Shift + S).

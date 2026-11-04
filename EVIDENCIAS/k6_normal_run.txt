@@ -1,0 +1,50 @@
+======================================================================
+K6 LOAD TEST RUN - BASELINE NORMAL (Section 10)
+Thresholds: http_req_failed: rate<0.01, http_req_duration: p(95)<500
+Status: PASSED (Exit code: 0)
+======================================================================
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+     execution: local
+        script: backend/perf/health-test.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 5 max VUs, 40s max duration (incl. graceful stop):
+              * default: 5 looping VUs for 10s (gracefulStop: 30s)
+
+  █ THRESHOLDS 
+
+    http_req_duration
+    ✓ 'p(95)<500' p(95)=15.9ms
+
+    http_req_failed
+    ✓ 'rate<0.01' rate=0.00%
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 50      4.977794/s
+    checks_succeeded...: 100.00% 50 out of 50
+    checks_failed......: 0.00%   0 out of 50
+
+    ✓ health returns 200
+
+    HTTP
+    http_req_duration..............: avg=2.83ms min=0s med=1.5ms max=17.72ms p(90)=3.41ms p(95)=15.9ms
+      { expected_response:true }...: avg=2.83ms min=0s med=1.5ms max=17.72ms p(90)=3.41ms p(95)=15.9ms
+    http_req_failed................: 0.00%  0 out of 50
+    http_reqs......................: 50     4.977794/s
+
+    EXECUTION
+    iteration_duration.............: avg=1s     min=1s med=1s    max=1.02s   p(90)=1s     p(95)=1.02s 
+    iterations.....................: 50     4.977794/s
+    vus............................: 5      min=5       max=5
+    vus_max........................: 5      min=5       max=5
+
+    NETWORK
+    data_received..................: 21 kB  2.0 kB/s
+    data_sent......................: 3.8 kB 378 B/s

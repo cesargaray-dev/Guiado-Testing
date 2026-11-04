@@ -1,0 +1,22 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Coverage
+coverage/
+*.lcov
+
+# Flutter / Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+build/
+
+# Environment & OS
+.env
+.DS_Store
+Thumbs.db

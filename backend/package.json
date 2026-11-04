@@ -1,0 +1,28 @@
+{
+  "name": "task-manager-backend",
+  "version": "1.0.0",
+  "description": "Task Manager REST API with Express, JWT authentication and comprehensive testing",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "jest --runInBand --detectOpenHandles --forceExit",
+    "test:coverage": "jest --coverage --runInBand --detectOpenHandles --forceExit"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "verbose": true,
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/server.js"
+    ]
+  }
+}
