@@ -53,3 +53,4 @@ Todas las habilidades requeridas por la guía fueron practicadas, demostradas y 
    * *Mitigación:* Cada prueba BOLA genera dinámicamente dos cuentas independientes (Usuario Propietario y Usuario Extraño) para validar la frontera de aislamiento.
 5. **Depender de code coverage como métrica única de calidad:**
    * *Mitigación:* Aunque el coverage del backend supera el 85%, la suite se reforzó con pruebas de límites BVA, pruebas de carga k6 y pruebas exploratorias humanas.
+

@@ -58,3 +58,4 @@ Para el requerimiento: **"Un usuario autenticado puede crear una tarea."**
 * **Entonces** el sistema:
   1. Si falta o expira el token: responde de inmediato con HTTP `401 Unauthorized`.
   2. Si se incluye un `ownerId` arbitrario: el backend descarta el campo inyectado o rechaza la solicitud, asociando la tarea de manera estricta y exclusiva al `userId` extraído del token criptográfico del servidor, impidiendo cualquier escalamiento de privilegios o suplantación.
+

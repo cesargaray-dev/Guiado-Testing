@@ -57,3 +57,4 @@
 
 2. **Detección temprana de vulnerabilidades de denegación de servicio:**
    Al acotar el límite superior a 64 caracteres, se protege el servidor de ataques de agotamiento de CPU causados por algoritmos de hashing intensivos (como Bcrypt o Argon2) cuando se envían cadenas de megabytes en el campo de contraseña.
+

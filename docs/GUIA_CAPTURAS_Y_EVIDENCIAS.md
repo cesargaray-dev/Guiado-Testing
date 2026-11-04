@@ -44,55 +44,72 @@ Si tu profesor, evaluador o entrega académica requiere **capturas de pantalla g
 
 ### Captura 1: Pruebas del Backend en Verde (Jest)
 * **Qué demuestra:** Ejecución exitosa de las 34 pruebas unitarias, de integración, seguridad y límites.
-* **Cómo tomarla:**
-  1. Abre tu terminal (PowerShell o CMD) en la raíz del proyecto.
-  2. Ejecuta:
-     ```powershell
-     cd backend
-     npm test
-     ```
-  3. Toma captura a la terminal donde se vean los bloques en verde:
-     `PASS tests/tasks.test.js`, `PASS tests/validation.test.js`, etc., y la línea final:
-     `Test Suites: 5 passed, 5 total | Tests: 34 passed, 34 total`.
+* **Comando:**
+  ```powershell
+  cd backend
+  npm test
+  ```
+![Backend Tests](img/01_backend_tests.jpg)
 
 ---
 
 ### Captura 2: Cobertura de Código del Backend (Coverage)
 * **Qué demuestra:** Cobertura superior al 85% de líneas y funciones probadas.
-* **Cómo tomarla:**
-  1. En la carpeta `backend`, ejecuta:
-     ```powershell
-     npm run test:coverage
-     ```
-  2. Toma captura de la tabla de porcentajes que muestra el desglose por archivo (`app.js`, `jwt.js`, `tasks.js`, `validation.js`).
+* **Comando:**
+  ```powershell
+  npm run test:coverage
+  ```
+![Backend Coverage](img/02_backend_coverage.jpg)
 
 ---
 
 ### Captura 3: Pruebas de Widgets y Viaje de Usuario en Flutter
 * **Qué demuestra:** Cumplimiento de los tests de interfaz móvil, accesibilidad, botón de reintento y E2E.
-* **Cómo tomarla:**
-  1. En la terminal, dirígete a `mobile`:
-     ```powershell
-     cd ..\mobile
-     flutter test
-     ```
-  2. Toma captura donde se observe el mensaje final:
-     `00:03 +13: All tests passed!`.
+* **Comando:**
+  ```powershell
+  cd ..\mobile
+  flutter test
+  ```
+![Flutter Tests](img/03_flutter_tests.png)
 
 ---
 
 ### Captura 4: Prueba de Rendimiento con k6 (Línea Base y Umbral Superado)
 * **Qué demuestra:** Medición de latencia y cumplimiento del Ejercicio Práctico 10.
-* **Cómo tomarla:**
-  1. En una terminal, levanta el backend:
+* **Cómo ejecutarla correctamente:**
+  > ⚠️ **Atención:** Si acabas de correr las pruebas de Flutter, tu terminal está ubicada en `C:\Users\cesar\Downloads\Guiado Testing\mobile`. Para que las rutas relativas `backend/...` funcionen, **debes subir un nivel con `cd ..` a la raíz del proyecto**.
+
+  1. **Terminal 1 (en la raíz `Guiado Testing`):**
      ```powershell
+     cd ..
      node backend/src/server.js
      ```
-  2. En otra terminal, ejecuta el test de k6:
+     *(Verás: `Task Manager API running at http://localhost:3000`)*
+
+  2. **Terminal 2 (también en la raíz `Guiado Testing`):**
      ```powershell
      $env:BASE_URL="http://127.0.0.1:3000"; & "C:\Program Files\k6\k6.exe" run backend/perf/health-test.js
      ```
-  3. Toma captura donde se aprecie el logo ASCII de Grafana k6 y los checks en verde (`✓ 'p(95)<500'`).
+     *(Verás el logo ASCII de Grafana k6 y `✓ 'p(95)<500'`)*
+
+  3. **Demostración de umbral estricto (Ejercicio 10):**
+     ```powershell
+     $env:BASE_URL="http://127.0.0.1:3000"; & "C:\Program Files\k6\k6.exe" run backend/perf/health-test-strict.js
+     ```
+     *(Verás la alerta roja `✗ 'p(95)<0.5'` indicando la violación del SLA de rendimiento)*
+
+---
+
+### 💡 Diagnóstico y Solución de Errores Comunes de Terminal
+
+#### Error: `MODULE_NOT_FOUND` al ejecutar `node backend/src/server.js` o k6 `couldn't be found on local disk`
+* **Causa:** El prompt de la terminal indica `PS C:\...\Guiado Testing\mobile>`. Como te encuentras dentro de la subcarpeta `mobile`, Node busca `mobile\backend\src\server.js`, la cual no existe.
+* **Solución:**
+  Escribe:
+  ```powershell
+  cd ..
+  ```
+  Al presionar Enter verás que tu prompt cambia a `PS C:\...\Guiado Testing>`. Desde ahí, vuelve a correr los comandos de la API y de k6 con éxito total.
 
 ---
 
@@ -106,3 +123,4 @@ Si tu profesor, evaluador o entrega académica requiere **capturas de pantalla g
   2. Se abrirá la ventana de Chrome con la pantalla de login de Task Manager (`email-field`, `password-field`, botón "Log In").
   3. Ingresa cualquier correo sintético (`tester@example.test`), pulsa "Log In" y verás la lista de tareas con el botón flotante `+`.
   4. Crea una tarea ("Revisar entrega") y tómale captura con tu herramienta de recortes (Win + Shift + S).
+

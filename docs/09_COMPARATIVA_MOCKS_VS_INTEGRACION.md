@@ -48,3 +48,4 @@ Las dos pruebas fueron implementadas y ejecutadas en el repositorio bajo el arch
    Evitar el uso de `sleep()` estáticos o temporizadores arbitrarios. En Flutter, usar `pumpAndSettle()`. En backend, sincronizar mediante promesas `async/await`.
 3. **Limpieza estricta de estado (State Isolation):**
    Garantizar que cada prueba configure sus propios datos sintéticos y limpie su estado (`beforeEach(() => db.reset())`) para que el orden de ejecución no altere el resultado.
+

@@ -70,3 +70,4 @@ describe('Security Basics and Negative Behavior (Section 9)', () => {
     expect(lastStatus).toBe(429);
   });
 });
+

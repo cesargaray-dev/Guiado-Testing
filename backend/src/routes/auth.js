@@ -121,3 +121,4 @@ router.post('/logout-all', authenticate, (req, res) => {
 });
 
 module.exports = router;
+

@@ -37,10 +37,35 @@ El sistema bajo prueba consiste en una solución completa de **Task Manager** co
 
 ---
 
+## 📷 Evidencias Visuales de Ejecución
+
+A continuación se presentan las evidencias directas obtenidas durante la ejecución de las suites de prueba en el entorno de desarrollo:
+
+### 1. Pruebas Unitarias y de Integración Backend (Jest)
+Todas las 34 pruebas pasan satisfactoriamente en menos de 3 segundos, cubriendo validaciones de límites BVA, autenticación JWT, rotación de tokens, prevención BOLA/BOPLA y comparativa con mocks.
+
+![Backend Tests](docs/img/01_backend_tests.jpg)
+
+### 2. Reporte de Cobertura de Código Backend (>85%)
+La cobertura supera ampliamente el 85% de líneas, sentencias y funciones, protegiendo todas las rutas críticas de la API (`tasks.js`, `auth.js`, `validation.js`, `jwt.js`).
+
+![Backend Coverage](docs/img/02_backend_coverage.jpg)
+
+### 3. Pruebas de Widgets y Viaje de Usuario Completo en Flutter
+Las 13 pruebas de Flutter (modelo `Task`, widget `TaskListPanel` con botón `Retry`, escalado accesible al 200%, layout responsivo y test E2E de usuario) se ejecutan con éxito al 100%.
+
+![Flutter Tests](docs/img/03_flutter_tests.png)
+
+---
+
 ## 🚀 Guía de Ejecución Rápida
+
+> ⚠️ **Nota Importante de Navegación de Directorios:**  
+> Asegúrate de estar en el directorio correspondiente antes de ejecutar cada comando. Si te encuentras dentro de `mobile`, regresa a la raíz ejecutando `cd ..`.
 
 ### 1. Pruebas del Backend (Node.js & Jest)
 ```bash
+# Desde la raíz del repositorio:
 cd backend
 npm install
 npm test
@@ -50,25 +75,32 @@ npm run test:coverage
 
 ### 2. Pruebas de la Aplicación Móvil (Flutter & Dart)
 ```bash
+# Regresar a la raíz y entrar a mobile:
 cd ../mobile
 flutter pub get
 flutter test
 ```
 * **Resultado:** 3 suites ejecutadas, **13 pruebas superadas (100% PASS)** (unitarias, widgets con botón de reintento, accesibilidad, y viaje completo E2E).
 
-### 3. Pruebas de Carga con Grafana k6
-1. Iniciar la API:
-   ```bash
-   node backend/src/server.js
-   ```
-2. En otra terminal, ejecutar la prueba normal (Línea Base):
-   ```bash
-   & "C:\Program Files\k6\k6.exe" run backend/perf/health-test.js
-   ```
-3. Ejecutar la prueba con umbral alterado (Demostración de fallo controlado):
-   ```bash
-   & "C:\Program Files\k6\k6.exe" run backend/perf/health-test-strict.js
-   ```
+### 3. Pruebas de Carga con Grafana k6 (Sección 10)
+Asegúrate de ejecutar estos comandos **desde la raíz del proyecto** (`Guiado Testing`):
+
+```powershell
+# Si tu terminal quedó en 'mobile', regresa a la raíz:
+cd ..
+
+# Terminal 1: Iniciar el servidor API
+node backend/src/server.js
+```
+
+En una segunda terminal (también ubicada en la raíz del proyecto `Guiado Testing`):
+```powershell
+# Terminal 2: Ejecutar la prueba de carga normal (Línea Base SLA)
+$env:BASE_URL="http://127.0.0.1:3000"; & "C:\Program Files\k6\k6.exe" run backend/perf/health-test.js
+
+# Demostración del Ejercicio Práctico 10 (Fallo por umbral estricto p(95)<0.5ms):
+$env:BASE_URL="http://127.0.0.1:3000"; & "C:\Program Files\k6\k6.exe" run backend/perf/health-test-strict.js
+```
 
 ---
 
@@ -141,3 +173,4 @@ flutter test
 * [x] **47 pruebas automatizadas totales (34 backend + 13 móvil) pasando al 100%.**
 * [x] **Pipeline de Integración Continua (CI) en GitHub Actions configurado.**
 * [x] **Evidencias reales de ejecución almacenadas y guía de screenshots lista para entrega.**
+

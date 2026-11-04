@@ -50,3 +50,4 @@ La suite de humo se ejecuta inmediatamente después de cada despliegue o compila
 2. **Aislamiento y Limpieza Automática (Database Reset):**
    * En cada bloque de ejecución (`beforeEach` en Jest), se invoca `db.reset()`, garantizando que ningún caso de prueba contamine el estado o las llaves foráneas del siguiente.
    * La base de datos de pruebas es totalmente independiente del entorno de desarrollo o producción.
+

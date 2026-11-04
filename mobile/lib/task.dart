@@ -38,3 +38,4 @@ class Task {
     'completed': completed,
   };
 }
+

@@ -48,3 +48,4 @@ Status: PASSED (Exit code: 0)
     NETWORK
     data_received..................: 21 kB  2.0 kB/s
     data_sent......................: 3.8 kB 378 B/s
+

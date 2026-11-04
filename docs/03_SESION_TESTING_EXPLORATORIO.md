@@ -40,3 +40,4 @@
 
 3. **La discrepancia de límites entre cliente y servidor:**
    * *Sorpresa:* Aunque la API protegía estrictamente el límite de 120 caracteres, el campo de texto móvil permitía escribir indefinidamente. Esto demostró que la validación en backend es indispensable para la seguridad, pero la validación en frontend es crucial para la experiencia de usuario.
+

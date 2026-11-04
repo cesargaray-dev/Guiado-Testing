@@ -73,3 +73,4 @@
      tester.view.physicalSize = const Size(320, 568);
      ```
      Verificando con cero excepciones (`expect(tester.takeException(), isNull)`).
+

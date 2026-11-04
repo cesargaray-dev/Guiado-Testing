@@ -37,3 +37,4 @@ void main() {
     expect(find.byKey(const Key('login-button')), findsOneWidget);
   });
 }
+

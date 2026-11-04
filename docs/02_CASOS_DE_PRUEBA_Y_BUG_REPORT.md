@@ -96,3 +96,4 @@
 * **Justificación para BUG-104:**
   * **¿Por qué Severidad Alta?** Porque causa una percepción directa de **pérdida de datos**. El usuario completó un trabajo y de repente no tiene confirmación visual de que su tarea existe, lo que destruye la confianza fundamental en el Task Manager.
   * **¿Por qué Prioridad Alta?** Porque marcar una tarea como completada es el **flujo de negocio principal (core flow)** de una aplicación de tareas. Si la versión se libera con este comportamiento sin aviso o filtro visible, el 100% de los usuarios activos reportarán frustración en las primeras interacciones.
+

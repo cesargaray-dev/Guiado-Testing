@@ -127,3 +127,4 @@ Status: Exit code 1 (FAILED)
 
 3. **Importancia para Integración Continua (CI/CD):**
    * Debido a que k6 retorna un código de salida distinto de cero (`exit code 1`), cualquier pipeline de CI (como GitHub Actions) detecta automáticamente la degradación de rendimiento y cancela el despliegue a producción antes de que el código afecte a los usuarios reales.
+

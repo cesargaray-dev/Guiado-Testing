@@ -72,3 +72,4 @@ describe('validatePassword (Practice Exercise 8 - Boundary Value Analysis)', () 
     expect(() => validatePassword(null)).toThrow(TypeError);
   });
 });
+

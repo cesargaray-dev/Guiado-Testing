@@ -56,3 +56,4 @@ PASS tests/tasks.test.js
 * **Payload enviado:** `<script>alert(1)</script>` o `<img src=x onerror=alert('xss')>`.
 * **Resultado en Backend:** Se almacena como texto plano seguro.
 * **Resultado en Flutter UI:** Los widgets `Text` de Flutter no ejecutan motor HTML ni JavaScript web; renderizan la cadena literalmente en pantalla como glifos de texto ordinario, neutralizando por completo el vector de inyección web.
+

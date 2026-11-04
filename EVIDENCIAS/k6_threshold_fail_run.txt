@@ -52,3 +52,4 @@ Status: FAILED (Exit code: 1 - thresholds on metrics have been crossed)
 running (05.0s), 0/5 VUs, 50 complete and 0 interrupted iterations
 default ✓ [ 100% ] 5 VUs  5s
 time="2026-11-04T16:55:26-06:00" level=error msg="thresholds on metrics 'http_req_duration' have been crossed"
+
